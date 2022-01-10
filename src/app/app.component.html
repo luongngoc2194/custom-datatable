@@ -7,13 +7,13 @@
   >
 
     <ng-template template="header" let-colunms>
-      <div class="colunm" *ngFor="let col of colunms">
+      <div class="colunm" *ngFor="let col of colunms" [style.flex]="col.flex">
         {{col.colName}}
       </div>
     </ng-template>
 
     <ng-template template='body' let-data>
-      <div class="row" *ngFor="let col of data.colunms">
+      <div class="row" *ngFor="let col of data.colunms" [style.flex]="col.flex">
         {{data.rowData[col.fieldName]}}
       </div>
     </ng-template>

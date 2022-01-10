@@ -3,27 +3,33 @@
 export const cols = [
   {
     colName: 'Id',
-    fieldName: 'id'
+    fieldName: 'id',
+    flex : 1
   },
   {
     colName: 'Code',
-    fieldName: 'code'
+    fieldName: 'code',
+    flex : 1
   },
   {
     colName: 'Name',
-    fieldName: 'name'
+    fieldName: 'name',
+    flex : 1
   },
   {
     colName: 'Description',
-    fieldName: 'description'
+    fieldName: 'description',
+    flex : 2
   },
   {
     colName: 'Price',
-    fieldName: 'price'
+    fieldName: 'price',
+    flex : 1
   },
   {
     colName: 'Category',
-    fieldName: 'category'
+    fieldName: 'category',
+    flex : 1
   }
 ];
 
