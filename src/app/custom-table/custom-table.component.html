@@ -1,0 +1,27 @@
+<div class="table-container">
+  <div class="table" [ngStyle]="tableHeight">
+    <div class="table-colunm">
+      <div class="colunm">No.</div>
+      <div *ngFor="let item of cols" class="colunm">
+        {{item.colName}}
+      </div>
+    </div>
+    <div class="table-row" *ngFor="let item of items; index as i">
+      <div class="row">{{i + 1 + pageData.start}}</div>
+      <div class="row">{{item.id}}</div>
+      <div class="row">{{item.name}}</div>
+      <div class="row">{{item.code}}</div>
+      <div class="row">{{item.description}}</div>
+      <div class="row">{{item.price}}</div>
+      <div class="row">{{item.category}}</div>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="current">
+      {{pageData.start + 1}} <span class="separator">-</span>{{pageData.end}} of {{size}}
+    </div>
+    <button (click)="prev()">prev</button>
+    <button (click)="next()">next</button>
+
+  </div>
+</div>
