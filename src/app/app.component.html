@@ -4,5 +4,18 @@
     [data]="data"
     [pageSize]="5"
     style="display: inline-block;width: 900px"
-  ></app-custom-table>
+  >
+
+    <ng-template template="header" let-colunms>
+      <div class="colunm" *ngFor="let col of colunms">
+        {{col.colName}}
+      </div>
+    </ng-template>
+
+    <ng-template template='body' let-data>
+      <div class="row" *ngFor="let col of data.colunms">
+        {{data.rowData[col.fieldName]}}
+      </div>
+    </ng-template>
+  </app-custom-table>
 </div>

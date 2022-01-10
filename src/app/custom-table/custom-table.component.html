@@ -1,20 +1,26 @@
 <div class="table-container">
   <div class="table" [ngStyle]="tableHeight">
-    <div class="table-colunm">
-      <div class="colunm">No.</div>
-      <div *ngFor="let item of cols" class="colunm">
-        {{item.colName}}
-      </div>
-    </div>
-    <div class="table-row" *ngFor="let item of items; index as i">
-      <div class="row">{{i + 1 + pageData.start}}</div>
-      <div class="row">{{item.id}}</div>
-      <div class="row">{{item.name}}</div>
-      <div class="row">{{item.code}}</div>
-      <div class="row">{{item.description}}</div>
-      <div class="row">{{item.price}}</div>
-      <div class="row">{{item.category}}</div>
-    </div>
+    <ng-container *ngFor="let tp of templates">
+      <ng-container [ngSwitch]="tp.templateName">
+        <ng-container *ngSwitchCase="TEMPLATE.header">
+          <div class="table-colunm">
+            <div class="colunm">No.</div>
+            <ng-container
+              *ngTemplateOutlet="tp.template; context: { $implicit:  cols}"
+            ></ng-container>
+          </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="TEMPLATE.body">
+          <div class="table-row" *ngFor="let item of items; index as i">
+            <div class="row">{{ i + 1 + pageData.start }}</div>
+            <ng-container
+              *ngTemplateOutlet="tp.template; context: { $implicit: {rowData: item, index: i, colunms: cols}}"
+            ></ng-container>
+          </div>
+        </ng-container>
+        <div *ngSwitchDefault> Please provide correct template name.</div>
+      </ng-container>
+    </ng-container>
   </div>
   <div class="actions">
     <div class="current">

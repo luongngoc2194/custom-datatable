@@ -1,15 +1,23 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ContentChildren, Input, OnInit, QueryList} from '@angular/core';
+import {TemplateHeaderDirective} from './template/template-header.directive';
 
 const constants = {
-  PAGE_SIZE: 5
+  PAGE_SIZE: 5,
+  TEMPLATE: {
+    header: 'header',
+    body: 'body'
+  }
 };
 
 @Component({
   selector: 'app-custom-table',
   templateUrl: './custom-table.component.html',
-  styleUrls: ['./custom-table.component.scss']
+  styleUrls: ['./custom-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomTableComponent implements OnInit {
+  public TEMPLATE = constants.TEMPLATE;
+
   @Input() cols = [];
   @Input() data: any[] = [];
   @Input() pageSize = constants.PAGE_SIZE;
@@ -20,6 +28,9 @@ export class CustomTableComponent implements OnInit {
     start: number,
     end: number
   };
+
+  @ContentChildren(TemplateHeaderDirective, {read: TemplateHeaderDirective})
+  public templates: QueryList<TemplateHeaderDirective>;
 
   constructor() {
   }
@@ -68,7 +79,6 @@ export class CustomTableComponent implements OnInit {
       start,
       end
     };
-    console.log(this.pageData);
   }
 
   prev() {

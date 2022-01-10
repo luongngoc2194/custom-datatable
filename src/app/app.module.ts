@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CustomTableComponent } from './custom-table/custom-table.component';
+import { TemplateHeaderDirective } from './custom-table/template/template-header.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomTableComponent
+    CustomTableComponent,
+    TemplateHeaderDirective
   ],
   imports: [
     BrowserModule,
